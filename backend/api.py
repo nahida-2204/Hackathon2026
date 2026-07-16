@@ -1,13 +1,16 @@
+import os
+from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from supabase import create_client, Client
 
+load_dotenv()
+
 # ==========================================
 # 1. SETUP & CONFIGURATION
 # ==========================================
-SUPABASE_URL = "https://yrwbupunkzlmnuksnmrh.supabase.co"
-# Paste your secure key here (anon/publishable key is fine for GET requests)
-SUPABASE_KEY = "SUPABASE_SECRET_KEY_REMOVED" 
+SUPABASE_URL = os.environ["SUPABASE_URL"]
+SUPABASE_KEY = os.environ["SUPABASE_KEY"]
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 

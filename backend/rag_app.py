@@ -101,17 +101,20 @@
 #     ask_budget_assistant(question=q1, keywords=k1, year_filter="2025-2026")
 
 
+import os
+from dotenv import load_dotenv
 import google.generativeai as genai
 from sentence_transformers import SentenceTransformer
 from supabase import create_client, Client
 
+load_dotenv()
+
 # ==========================================
 # 1. SETUP & CONFIGURATION
 # ==========================================
-# Ensure you use your newly generated, secure keys here!
-SUPABASE_URL = "https://yrwbupunkzlmnuksnmrh.supabase.co"
-SUPABASE_KEY = "SUPABASE_SECRET_KEY_REMOVED" 
-GEMINI_API_KEY = "GEMINI_API_KEY_REMOVED" # Paste your new key here
+SUPABASE_URL = os.environ["SUPABASE_URL"]
+SUPABASE_KEY = os.environ["SUPABASE_KEY"]
+GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
 
 # Initialize Supabase
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)

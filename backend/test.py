@@ -1,10 +1,13 @@
+import os
+from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
 from supabase import create_client, Client
 
+load_dotenv()
+
 # 1. Setup Supabase Configuration
-# Replace these with your actual Supabase credentials
-SUPABASE_URL = "https://yrwbupunkzlmnuksnmrh.supabase.co"
-SUPABASE_KEY = "SUPABASE_SECRET_KEY_REMOVED" 
+SUPABASE_URL = os.environ["SUPABASE_URL"]
+SUPABASE_KEY = os.environ["SUPABASE_KEY"]
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 

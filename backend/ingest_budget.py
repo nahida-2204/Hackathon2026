@@ -1,12 +1,15 @@
 import os
 import re
+from dotenv import load_dotenv
 from pypdf import PdfReader
 from sentence_transformers import SentenceTransformer
 from supabase import create_client, Client
 
+load_dotenv()
+
 # Setup Clients
-SUPABASE_URL = "https://yrwbupunkzlmnuksnmrh.supabase.co"
-SUPABASE_KEY = "SUPABASE_PUBLISHABLE_KEY_REMOVED" 
+SUPABASE_URL = os.environ["SUPABASE_URL"]
+SUPABASE_KEY = os.environ["SUPABASE_PUBLISHABLE_KEY"]
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 print("Loading local embedding model...")

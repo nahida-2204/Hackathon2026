@@ -1,14 +1,18 @@
+import os
+from dotenv import load_dotenv
 from google import genai
 from sentence_transformers import SentenceTransformer
 from supabase import create_client, Client
 import time
 
+load_dotenv()
+
 # ==========================================
 # 1. SETUP & CONFIGURATION
 # ==========================================
-SUPABASE_URL = "https://yrwbupunkzlmnuksnmrh.supabase.co"
-SUPABASE_KEY = "SUPABASE_SECRET_KEY_REMOVED" 
-GEMINI_API_KEY = "GEMINI_API_KEY_REMOVED"
+SUPABASE_URL = os.environ["SUPABASE_URL"]
+SUPABASE_KEY = os.environ["SUPABASE_KEY"]
+GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 client = genai.Client(api_key=GEMINI_API_KEY)
