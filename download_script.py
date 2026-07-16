@@ -49,7 +49,7 @@ def download_mauritius_budget():
         pdf_response.raise_for_status()
         
         # 6. Create a specific folder named 'Budgets' if it doesn't exist
-        output_folder = os.path.join(os.getcwd(), "Budgets")
+        output_folder = os.path.join(os.getcwd(), "PDF")
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
         
