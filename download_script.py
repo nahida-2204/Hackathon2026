@@ -48,11 +48,13 @@ def download_mauritius_budget():
         pdf_response = requests.get(budget_link, headers=headers)
         pdf_response.raise_for_status()
         
-        # 6. Save the file locally
-        filename = f"Mauritius_Budget_Speech_{current_year}_{next_year}.pdf"
+        # 6. Create a specific folder named 'Budgets' if it doesn't exist
+        output_folder = os.path.join(os.getcwd(), "Budgets")
+        if not os.path.exists(output_folder):
+            os.makedirs(output_folder)
         
-        # Saves to the same directory where the script is run
-        download_path = os.path.join(os.getcwd(), filename)
+        filename = f"Mauritius_Budget_Speech_{current_year}_{next_year}.pdf"
+        download_path = os.path.join(output_folder, filename)
         
         with open(download_path, 'wb') as file:
             file.write(pdf_response.content)
