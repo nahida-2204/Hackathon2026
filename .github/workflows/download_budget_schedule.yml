@@ -39,9 +39,9 @@ jobs:
           git config --global user.email "actions@github.com"
 
           # Check if there are any modified or untracked PDF files in the PDFS folder
-          if git status --porcelain | grep -q 'docs/PDFS/.*\.pdf'; then
-            echo "New PDF found in PDFS folder! Committing..."
-            git add docs/PDFS/*.pdf
+          if git status --porcelain | grep -q 'backend/docs/pdfs/.*\.pdf'; then
+            echo "New PDF found in backend/docs/pdfs! Committing..."
+            git add backend/docs/pdfs/*.pdf
             git commit -m "Auto-downloaded budget for this year into PDF folder"
             git push
           else
