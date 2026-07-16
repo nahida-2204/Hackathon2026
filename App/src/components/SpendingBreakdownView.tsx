@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { ArrowDown, ArrowUp, Calculator } from "lucide-react";
 
-const SPENDING_BREAKDOWN_API_URL = "https://api.example.com/spending-breakdown";
+const SPENDING_BREAKDOWN_API_URL = "/api/spendings";
 
 type SectorKey =
   | "social_security"

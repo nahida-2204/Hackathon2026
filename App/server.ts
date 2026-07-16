@@ -139,7 +139,25 @@ Use the requested JSON schema. Do not include any formatting or other text.`;
     });
   }
 });
+// Proxy FastAPI spendings through the React/Express server
+app.get("/api/spendings", async (_req: Request, res: Response) => {
+  try {
+    const backendResponse = await fetch(
+      "http://127.0.0.1:8000/api/spendings"
+    );
 
+    const data = await backendResponse.json();
+
+    res.status(backendResponse.status).json(data);
+  } catch (error) {
+    console.error("FastAPI spendings proxy error:", error);
+
+    res.status(502).json({
+      error: "Could not connect to the FastAPI backend.",
+      detail: "Make sure FastAPI is running at http://127.0.0.1:8000",
+    });
+  }
+});
 // Configure Vite integration for dev, static serving for prod
 async function setupServer() {
   if (process.env.NODE_ENV !== "production") {

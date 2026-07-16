@@ -1,3 +1,4 @@
+// @ts-ignore: suppress missing @types/react in this environment
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
